@@ -6,6 +6,7 @@
 <div class="container content-zone room-page">
   <div class="row">
     <div class="col-md-4">
+      {% assign photos = number.room_type.photos | sort:"featured" | reverse %}
       <h1> {{number.name}} </h1>
       {% unless number.description == '' %}
         <p> {{ number.description }} </p>
@@ -27,9 +28,9 @@
       {% endif %}
     </div>
     <div class="col-md-8">
-      {% if number.room_type.photos.size > 0 %}
+      {% if photos.size > 0 %}
         <div class="big-photo">
-          <img src="{{ number.room_type.photos.first.image | attachment_url: 'public_big' }}" />
+          <img src="{{ photos.first.image | attachment_url: 'public_big' }}" />
         </div>
       {% endif %}
     </div>
@@ -46,7 +47,7 @@
       {% if number.room_type.photos.size > 0 %}
         <div class="small-photos">
           <ul>
-            {% for photo in number.room_type.photos %}
+            {% for photo in photos %}
               {% if forloop.index0 == 0 %}
               <li class="active">
               {% else %}
