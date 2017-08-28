@@ -46,7 +46,7 @@
       {% if number.room_type.photos.size > 0 %}
         <div class="small-photos">
           <ul>
-            {% assign photos = number.room_type.photos | sort:"featured" | reverse %}
+            {% assign photos = number.room_type.photos %}
             {% for photo in photos %}
               {% if forloop.index0 == 0 %}
               <li class="active">
