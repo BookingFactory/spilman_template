@@ -39,7 +39,8 @@
             <div class="number">
               <div class="image">
                 {% assign photos = room.room_type.photos | sort: 'featured' | reverse %}
-                <img src="{{photos.first.image | attachment_url: 'public'}}" />
+                {{photos}}
+                <img src="{{room.room_type.photos.first.image | attachment_url: 'public'}}" />
               </div>
               <div class="info">
                 <div class="text">
